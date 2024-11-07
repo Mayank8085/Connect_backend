@@ -43,14 +43,16 @@ router.post("/register", singleUpload, async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
+    console.log(user)
     !user && res.status(400).json("Wrong Credentials!!");
     const validated = (await req.body.password) === user.password;
+    console.log(req.body)
     !validated && res.status(400).json("Wrong Credentials!!");
     let token = await user.getToken();
-    
+    console.log(token)
     res.status(200).cookie('token', token, options).json(user);
-  } catch {
-    res.status(500).json({ message: "Something went wrong" });
+  } catch(err){
+    res.status(500).json({ message: err});
   }
 });
 

@@ -37,6 +37,6 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", catRoute);
 
-app.listen("5000", () => {
-  console.log("Listening to port 5000...");
+app.listen("8000", () => {
+  console.log("Listening to port 8000...");
 });
